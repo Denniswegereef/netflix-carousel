@@ -1,0 +1,52 @@
+// .button {
+//   position: relative;
+//   display: inline-block;
+
+//   color: inherit;
+
+//   text-decoration: none;
+
+//   &:before {
+//     position: absolute;
+//     bottom: rem(-2px);
+
+//     width: 100%;
+//     height: 2px;
+
+//     background: currentColor;
+
+//     transform: scaleX(0);
+//     transform-origin: right;
+//     transition: transform .3s ease-out;
+
+//     content: '';
+//   }
+
+//   &:hover {
+//     &:before {
+//       transform-origin: left;
+//       transform: scaleX(1);
+//     }
+//   }
+
+//   @keyframes underline {
+//     from {
+//       transform: scaleX(0);
+//     }
+//     to {
+//       transform: scaleX(1);
+//     }
+//   }
+// }
+
+// .button-inline {
+//   transition: color .3s ease-in-out;
+
+//   &:before {
+//     bottom: rem(2px);
+//   }
+
+//   &:hover {
+//     color: $color-primary;
+//   }
+// }

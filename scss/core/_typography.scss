@@ -1,0 +1,38 @@
+.heading {
+  // @include font-giselle-regular();
+
+  margin: 0;
+  padding: 0;
+
+  color: $color-white;
+
+  // font-size: rem(110px);
+  // line-height: 0.8;
+  // text-transform: uppercase;
+  // letter-spacing: 0.2vw;
+}
+
+.subheading {
+  // @include font-favorit-bold();
+  margin: 0;
+  padding: 0;
+
+  color: $color-white;
+
+  // font-size: rem(16px);
+  // line-height: rem(25px);
+  // letter-spacing: -#{-2px};
+}
+
+.paragraph {
+  // @include font-favorit-light();
+
+  // margin: 0;
+  // padding: 0;
+
+  // color: $color-black;
+
+  // font-size: rem(15px);
+  // line-height: rem(25px);
+  // letter-spacing: 1.1;
+}
