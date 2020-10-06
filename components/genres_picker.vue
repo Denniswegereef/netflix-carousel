@@ -1,25 +1,31 @@
 <template>
-  <div>
-    <h1 class="heading">
-      Genres picker
-    </h1>
-  </div>
+  <section class="genres-picker">
+    <ul>
+      <li v-for="(item, index) in data.genres" :key="index" ref="item" class="genres-picker__item">
+        {{ item.name }}
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import { Draggable } from 'gsap/dist/Draggable.js'
-import { InertiaPlugin } from '../plugins/InertiaPlugin'
-
-if (process.client) gsap.registerPlugin(Draggable, InertiaPlugin)
+import data from '~/static/data/genres.json'
 
 export default {
+  data () {
+    return {
+      data
+    }
+  },
+
   mounted () {
-    console.log('hello from genre')
+    console.log('')
   }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+li {
+  color: $color-white;
+}
 </style>

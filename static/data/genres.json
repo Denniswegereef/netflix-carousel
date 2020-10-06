@@ -1,0 +1,40 @@
+{
+  "genres": [
+    {
+      "name": "Populair on Netflix",
+      "slug": "populair-on-netflix"
+    },
+    {
+      "name": "Continue watching",
+      "slug": "continue-watching"
+    },
+    {
+      "name": "Action & Adventure",
+      "slug": "action_adventure"
+    },
+    {
+      "name": "Classic Movies",
+      "slug": "classic_movies"
+    },
+    {
+      "name": "Documentaries",
+      "slug": "documentaries"
+    },
+    {
+      "name": "Gangster Movies",
+      "slug": "gangster_movies"
+    },
+    {
+      "name": "Mysteries",
+      "slug": "mysteries"
+    },
+    {
+      "name": "Thrillers",
+      "slug": "thrillers"
+    },
+    {
+      "name": "Horror",
+      "slug": "horror"
+    }
+  ]
+}
