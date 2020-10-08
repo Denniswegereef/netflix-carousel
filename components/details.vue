@@ -14,7 +14,7 @@
           {{ item.short_summary }}
         </p>
         <ul class="details__action">
-          <IconButton v-for="(iconItem, i) in icons" :key="i" :data="iconItem" ref="button" />
+          <IconButton v-for="(iconItem, i) in icons" :key="i" ref="button" :data="iconItem" />
         </ul>
       </section>
     </template>
@@ -172,7 +172,6 @@ export default {
     },
 
     _isDraggingHandler (draggingBoolean) {
-      console.log(draggingBoolean)
       draggingBoolean ? this.timelines.startDragging.play(0) : this.timelines.endDragging.restart()
     },
 
