@@ -1,20 +1,20 @@
 <template>
   <section v-if="renderComponent" class="details__container">
     <template v-for="(item, index) in [firstData, secondData]">
-      <section ref="details" class="details" :class="`details-${index}`" :key="index">
-        <h2 class="heading heading details__title">
+      <section ref="details" :key="index" class="details" :class="`details-${index}`">
+        <h2 ref="title" class="heading heading details__title">
           {{ item.title }}
         </h2>
         <div class="details__sub-text">
-          <span class="heading details__duration">{{ item.duration }}</span>
-          <span class="subheading details__director">{{ item.director }}</span>
+          <span ref="duration" class="heading details__duration">{{ item.duration }}</span>
+          <span ref="director" class="subheading details__director">{{ item.director }}</span>
         </div>
 
-        <p class="paragraph details__summary-short">
+        <p ref="summary" class="paragraph details__summary-short">
           {{ item.short_summary }}
         </p>
         <ul class="details__action">
-          <IconButton v-for="(iconItem, index) in icons" :key="index" :data="iconItem"/>
+          <IconButton v-for="(iconItem, i) in icons" :key="i" :data="iconItem" ref="button" />
         </ul>
       </section>
     </template>
@@ -39,7 +39,7 @@ export default {
       secondData: {},
       renderComponent: true,
       timelines: {
-        intro: gsap.timeline({ paused: true, delay: 1.3 }),
+        intro: gsap.timeline({ paused: true, delay: 2.6 }),
         click: gsap.timeline({ paused: true }),
         startDragging: gsap.timeline({ paused: true }),
         endDragging: gsap.timeline({ paused: true })
@@ -100,31 +100,64 @@ export default {
     },
 
     _setUpTimelines () {
-      const startDegrees = 25
+      const startDegrees = 18
       const tlIntro = this.timelines.intro
-      const firstItem = this.$refs.details[0]
-      const secondItem = this.$refs.details[1]
+
+      const arr = []
+      const halfButtons = Math.ceil(this.$refs.button.length / 2)
+      const firstButtons = this.$refs.button.splice(0, halfButtons)
+      const secondButtons = this.$refs.button.splice(-halfButtons)
+
+      /* eslint-disable */
+      for (let i = 0; i < this.$refs.details.length; i++) {
+        arr.push({
+          item: this.$refs.details[i],
+          title: this.$refs.title[i],
+          duration: this.$refs.duration[i],
+          director: this.$refs.director[i],
+          summary: this.$refs.summary[i],
+          buttons: i === 0 ? firstButtons.map(item => item.$el) : secondButtons.map(item => item.$el)
+        })
+      }
+      /* eslint-enable */
+
+      const first = arr[0]
+      const second = arr[1]
 
       // Timeline when page loads
-      gsap.set([firstItem, secondItem], { rotate: startDegrees, opacity: 0.0 })
-      tlIntro.to(firstItem, { rotate: 0.0, opacity: 1.0, duration: 1.5 }, 0.0)
-      tlIntro.to(firstItem, { rotate: 0.0, opacity: 1.0, duration: 1.5 }, 0.0)
+      gsap.set([first.item, second.item], { rotate: startDegrees, opacity: 0.0 })
+      tlIntro.to(first.item, { rotate: 0.0, opacity: 1.0, ease: 'power2.out', duration: 1.2 }, 0.0)
+      tlIntro.to(first.item, { rotate: 0.0, opacity: 1.0, duration: 1.5 }, 0.0)
+      tlIntro.from(first.title, { opacity: 0.0, ease: 'power2.out', duration: 0.3 }, 0.3)
+      tlIntro.from([first.duration, first.director], { opacity: 0.0, x: -10, ease: 'power2.out', stagger: 0.2 }, 1.2)
+      tlIntro.from(first.summary, { opacity: 0.0, x: 25, ease: 'power2.out', duration: 0.8 }, 1.8)
+      tlIntro.from(first.buttons, { opacity: 0.0, y: -10, stagger: 0.2 }, 1.8)
 
       // Timeline when user clicks on arrow or cover
       const tlClick = this.timelines.click
-      tlClick.to(firstItem, { rotate: -startDegrees, opacity: 0.0, duration: 0.5 }, 0.0)
-      tlClick.to(secondItem, { rotate: 0.0, opacity: 1.0, duration: 0.7 }, 0.0)
-      tlClick.set(firstItem, { rotate: startDegrees, opacity: 0.0 }, 0.6)
+      tlClick.to(first.item, { rotate: -startDegrees / 3, opacity: 0.0, ease: 'power4.out', duration: 0.5 }, 0.0)
+      tlClick.set([second.item, second.item], { rotate: startDegrees, opacity: 0.0 }, 0.0)
+      tlClick.to(second.item, { rotate: 0.0, opacity: 1.0, ease: 'power2.out', duration: 1.2 }, 0.0)
+      tlClick.to(second.item, { rotate: 0.0, opacity: 1.0, duration: 1.5 }, 0.0)
+      tlClick.from(second.title, { opacity: 0.0, ease: 'power2.out', duration: 0.3 }, 0.3)
+      tlClick.from([second.duration, second.director], { opacity: 0.0, x: -10, ease: 'power2.out', stagger: 0.2 }, 1.2)
+      tlClick.from(second.summary, { opacity: 0.0, x: 25, ease: 'power2.out', duration: 0.8 }, 1.8)
+      tlClick.from(second.buttons, { opacity: 0.0, y: -10, stagger: 0.2 }, 1.8)
 
       // Timeline when dragging starts
       const tlStartDragging = this.timelines.startDragging
-      tlStartDragging.set(secondItem, { opacity: 0.0 }, 0.0)
-      tlStartDragging.to(firstItem, { opacity: 0.0, duration: 0.7 }, 0.0)
+      tlStartDragging.set(second.item, { opacity: 0.0 }, 0.0)
+      tlStartDragging.to(first.item, { opacity: 0.0, duration: 0.7 }, 0.0)
 
       // Timeline when dragging ends
       const tlEndDragging = this.timelines.endDragging
-      tlEndDragging.set(firstItem, { rotate: startDegrees }, 0.0)
-      tlEndDragging.to(secondItem, { rotate: 0.0, opacity: 1.0, duration: 0.5 }, 0.0)
+      tlEndDragging.set(first.item, { opacity: 1.0 }, 0.0)
+      tlEndDragging.set([first.title, first.duration, first.director, first.summary, first.buttons], { opacity: 0.0, y: 10 }, 0.0)
+      tlEndDragging.to(first.item, { rotate: 0.0, duration: 0.5 }, 0.0)
+      tlEndDragging.to(first.title, { opacity: 1.0, y: 0, duration: 0.5 }, 0.0)
+      tlEndDragging.to([first.duration, first.director], { opacity: 1.0, y: 0, duration: 0.5 }, 0.2)
+      tlEndDragging.to(first.summary, { opacity: 1.0, y: 0, duration: 0.5 }, 0.4)
+      tlEndDragging.to(first.buttons, { opacity: 1.0, y: 0, stagger: 0.2 }, 0.8)
     },
 
     _changeItemData (index) {
@@ -139,7 +172,8 @@ export default {
     },
 
     _isDraggingHandler (draggingBoolean) {
-      draggingBoolean ? this.timelines.startDragging.play(0) : this.timelines.endDragging.play(0)
+      console.log(draggingBoolean)
+      draggingBoolean ? this.timelines.startDragging.play(0) : this.timelines.endDragging.restart()
     },
 
     _forceRerender () {
@@ -163,9 +197,9 @@ export default {
   top: 50%;
   right: 0;
 
-  width: calc(5vw + #{rem(300px)});
+  width: rem(300px);
 
-  padding-right: 5vw;
+  margin-right: 5vw;
 
   color: $color-white;
 
@@ -207,7 +241,7 @@ export default {
 
 @include mq-wide {
   .details {
-    width: calc(10vw + #{rem(400px)});
+    width: rem(400px);
   }
 }
 </style>

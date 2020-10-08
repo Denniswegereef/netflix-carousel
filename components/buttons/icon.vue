@@ -1,12 +1,10 @@
 <template>
   <li ref="icon" :class="$props.data.icon" class="icon">
-    <span ref="test" v-html="setIcon" class="svg-icon" />
+    <span ref="test" class="svg-icon" v-html="setIcon" />
   </li>
 </template>
 
 <script>
-// import { gsap } from 'gsap'
-
 export default {
   props: {
     data: {

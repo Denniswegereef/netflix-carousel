@@ -2,7 +2,7 @@
   <section class="genres-picker">
     <ul>
       <li v-for="(item, index) in data.genres" :key="index" ref="item" class="genres-picker__item">
-        <span class="subheading genres-picker__name" @hover="_nameHoverHandler">
+        <span class="subheading genres-picker__name">
           {{ item.name }}
         </span>
       </li>
@@ -20,15 +20,21 @@ export default {
     return {
       data,
       timelines: {
-        intro: gsap.timeline({ paused: true, delay: 0.3 })
+        intro: gsap.timeline({ paused: true, delay: 3.0 })
+      }
+    }
+  },
+
+  watch: {
+    '$store.state.preloader.loaded': {
+      handler () {
+        this.timelines.intro.play()
       }
     }
   },
 
   mounted () {
     this._setUpTimelines()
-
-    this.timelines.intro.play()
   },
 
   methods: {
@@ -39,10 +45,6 @@ export default {
       tlIntro.fromTo(this.$refs.item, { opacity: 0.0, x: -30 }, { opacity: 1.0, stagger: 0.15, x: 0 }, 0.5)
       tlIntro.to(this.$refs.item[0], { x: 15, duration: 0.8 }, 2.1)
       tlIntro.to(arrayShifted, { opacity: 0.4, duration: 0.4 }, 2.3)
-    },
-
-    _nameHoverHandler (el) {
-      console.log(el)
     }
   }
 }

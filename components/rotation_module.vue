@@ -39,7 +39,8 @@ export default {
       itemCount: 0,
       stepDegrees: 0,
       timelines: {
-        intro: gsap.timeline({ paused: true })
+        intro: gsap.timeline({ paused: true }),
+        smallDisc: gsap.timeline({ paused: true, repeat: -1 })
       }
     }
   },
@@ -47,21 +48,15 @@ export default {
   watch: {
     '$store.state.rotate.currentIndex': {
       handler (newValue, oldValue) {
-        console.log(`new ${newValue} -  old ${oldValue}`)
         this._clickNextAnimation()
         this._rotateToIndex(this.$store.state.rotate.currentIndex, newValue, oldValue)
-      }
-    },
-
-    '$store.state.rotate.dragging': {
-      handler (draggingBoolean) {
-        console.log(draggingBoolean)
       }
     },
 
     '$store.state.preloader.loaded': {
       handler () {
         this.timelines.intro.play()
+        this.timelines.smallDisc.play()
       }
     }
   },
@@ -77,11 +72,15 @@ export default {
       const tlIntro = this.timelines.intro
       const currentIndex = this.$store.state.rotate.currentIndex
 
-      tlIntro.to(this.$refs.list_container, { rotate: 90, duration: 1.5 }, 1.3)
-      tlIntro.to(this.$refs.disc, { opacity: 1.0, duration: 0.5 }, 1.7)
-      tlIntro.to(this.$refs.disc_inner, { opacity: 0.3, duration: 3 }, 2.0)
+      tlIntro.fromTo(this.$refs.list_container, { rotate: 360 }, { rotate: 90, ease: 'back.out(1.4)', duration: 2.5 }, 0.4)
+      tlIntro.to(this.$refs.disc, { opacity: 1.0, duration: 0.5 }, 0.6)
+      tlIntro.to(this.$refs.disc_inner, { opacity: 0.3, duration: 5.0 }, 0.6)
       tlIntro.add(this._callCoverFirstTimelines, 2.0)
-      tlIntro.add(this.$refs.rotation_cover[currentIndex].playCurrentAnimation, 2.0)
+      tlIntro.add(this.$refs.rotation_cover[currentIndex].playCurrentAnimation, 2.2)
+
+      const tlSmallDisc = this.timelines.smallDisc
+
+      tlSmallDisc.to(this.$refs.disc_inner, { rotate: 360, duration: 25.0 })
     },
 
     _callCoverFirstTimelines () {
@@ -147,10 +146,6 @@ export default {
       return currentDegrees
     },
 
-    _isDraggingAnimation (draggingBoolean) {
-      // for (let i = 0; i < this.$refs.rotation_cover.length; i++) this.$refs.rotation_cover[i].playDraggingStartAnimation()
-    },
-
     _isDraggingStopAnimation () {
       for (let i = 0; i < this.$refs.rotation_cover.length; i++) this.$refs.rotation_cover[i].playDraggingEndAnimation()
     },
@@ -197,7 +192,7 @@ export default {
   right: 0;
 
   height: 100vh;
-  width: 50vw;
+  width: 45vw;
 }
 
 .rotation__disc {
@@ -212,9 +207,8 @@ export default {
   height: 150vh;
   width: 150vh;
 
-  border-radius: 150vh;
+  border-radius: 100%;
 
-  // background: linear-gradient(0deg, rgba(131,58,180, 0.2) 0%, rgba(253,29,29,0.2) 50%, rgba(252,176,69, 0.2) 100%);
   opacity: 0;
   cursor: pointer;
 }
@@ -225,7 +219,7 @@ export default {
   height: 119vh;
   width: 119vh;
 
-  border-radius: 130vh;
+  border-radius: 100%;
   border-left: rem(3px) solid $color-secondary;
   border-right: rem(3px) solid $color-secondary;
 

@@ -1,5 +1,5 @@
 <template>
-  <div ref="cover" class="rotation-cover">
+  <div ref="cover" class="rotation-cover" @mouseover="_coverMouseOverHandler" @mouseleave="_coverMouseLeaveHandler">
     <div ref="loading" class="rotation-cover__loading" />
     <div v-if="coverImage && coverVideo" class="rotation-cover__media-container">
       <video
@@ -12,7 +12,7 @@
       <img ref="image" :src="coverImage" :alt="$props.data.cover.alt" class="rotation-cover__image">
     </div>
     <div ref="watched_bar" class="rotation-cover__watched">
-      <span ref="watched_amount" class="rotation-cover__watched-amount" :style="setWidth"/>
+      <span ref="watched_amount" class="rotation-cover__watched-amount" :style="setWidth" />
     </div>
   </div>
 </template>
@@ -66,13 +66,11 @@ export default {
 
   methods: {
     // Public
-
     playIntroAnimation () {
       this.timelines.intro.play()
     },
 
     playCurrentAnimation () {
-      // console.log(this)
       this._createCurrentTimeline()
       this.isInRestState = false
     },
@@ -80,7 +78,6 @@ export default {
     playNextAnimation () {
       if (this.isInRestState) return
 
-      console.log(this.$props.index)
       this.timelines.next.restart()
       this.isInRestState = true
     },
@@ -89,13 +86,6 @@ export default {
       this.timelines.startDragging.play()
     },
 
-    playDraggingEndAnimation () {
-      // if (this.$store.state.rotate.currentIndex === this.$props.index) return
-
-      // this.timelines.stopDragging.play()
-    },
-
-    // Private
     _setUpTimelines () {
       const cover = this.$refs.cover
       const image = this.$refs.image
@@ -111,16 +101,16 @@ export default {
       gsap.set([watchedBar, watchedAmount], { scaleX: 0.0, opacity: 0 })
       gsap.set([image, video], { opacity: 0 })
 
-      tlIntro.to(image, { opacity: 1.0, duration: 0.3 }, 0.4)
-      tlIntro.to(cover, { scale: 0.8, duration: 0.5 }, 0.5)
-      tlIntro.to(loading, { opacity: 0.0, duration: 0.8 }, 0.8)
+      tlIntro.to(image, { opacity: 1.0, duration: 0.7 }, 0.6)
+      tlIntro.to(cover, { scale: 0.8, opacity: 0.2, duration: 0.5 }, 0.3)
+      tlIntro.to(loading, { opacity: 0.0, duration: 0.4 }, 0.6)
       if (this.$props.data.watched_duration > 0) tlIntro.to(watchedBar, { opacity: 1.0, scaleX: 1.0, duration: 1.0 }, 1.3)
       tlIntro.to(watchedAmount, { opacity: 1.0, scaleX: 1.0, duration: 0.5 }, 2.3)
 
       // Play next timeline
       const tlNext = this.timelines.next
       tlNext.add(this._pauseVideo, 0.0)
-      tlNext.to(cover, { scale: 0.8, duration: 1.0 }, 0.1)
+      tlNext.to(cover, { scale: 0.8, opacity: 0.2, duration: 1.0 }, 0.1)
       tlNext.to(video, { opacity: 0.0, duration: 0.2 }, 0.1)
       tlNext.to(image, { opacity: 1.0, duration: 0.5 }, 0.3)
 
@@ -129,7 +119,7 @@ export default {
       // tlStartDragging.eventCallback('onComplete', this._onCompleteTimelineHandler, [tlStartDragging])
       tlStartDragging.add(this._pauseVideo, 0.0)
       tlStartDragging.to(image, { opacity: 1.0, duration: 0.3 }, 0.2)
-      tlStartDragging.to(cover, { duration: 0.5, scale: 0.8 }, 0.2)
+      tlStartDragging.to(cover, { duration: 0.5, x: 0.0, opacity: 0.2, scale: 0.8 }, 0.2)
       tlStartDragging.to(video, { opacity: 0.0, duration: 0.3 }, 0.3)
 
       // When user ends dragging timeline
@@ -146,11 +136,13 @@ export default {
       // Play current active timeline
       const tlCurrent = gsap.timeline({ paused: true })
       tlCurrent.eventCallback('onComplete', this._onCompleteTimelineHandler, [tlCurrent])
-      tlCurrent.to(cover, { duration: 0.5, scale: 1.2 }, 0.5)
-      tlCurrent.set(video, { opacity: 1.0 }, 0.6)
-      tlCurrent.to(loading, { opacity: 0.0 }, 0.8)
-      tlCurrent.add(this._playVideo, 1.0)
-      tlCurrent.to(image, { opacity: 0 }, 1.2)
+      tlCurrent.to(image, { opacity: 1.0, duration: 0.4 }, 0.0)
+      tlCurrent.to(cover, { ease: 'power3.out', opacity: 1.0, duration: 2.5 }, 0.1)
+      tlCurrent.to(loading, { opacity: 0.0 }, 0.2)
+      tlCurrent.to(cover, { scale: 1.2, ease: 'power1.inOut', duration: 0.8 }, 0.2)
+      tlCurrent.to(image, { opacity: 0.0, duration: 0.6 }, 1.4)
+      tlCurrent.add(this._playVideo, 1.8)
+      tlCurrent.set(video, { opacity: 1.0 }, 1.4)
 
       tlCurrent.play()
     },
@@ -166,6 +158,17 @@ export default {
 
     _onCompleteTimelineHandler (timeline) {
       timeline.kill()
+    },
+
+    // Handlers
+    _coverMouseOverHandler () {
+      if (this.$store.state.rotate.dragging) return
+
+      gsap.to(this.$refs.cover, { opacity: 0.8, duration: 0.2 })
+    },
+
+    _coverMouseLeaveHandler () {
+      gsap.to(this.$refs.cover, { opacity: 0.2, duration: 0.3 })
     }
   }
 }

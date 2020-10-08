@@ -84,8 +84,6 @@ export default {
   height: rem(30px);
   width: rem(30px);
 
-  // background: rgba(0, 0, 0, 0.5);
-
   z-index: 3;
 
   cursor: pointer;

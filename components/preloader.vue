@@ -1,7 +1,5 @@
 <template>
-  <section v-if="!$store.state.preloader.loaded" class="preloader">
-    <div>logo</div>
-  </section>
+  <section v-if="!$store.state.preloader.loaded" class="preloader" />
 </template>
 
 <script>
@@ -9,7 +7,7 @@ export default {
   mounted () {
     setTimeout(() => {
       this.$store.commit('preloader/toggleLoaded', true)
-    }, 1000)
+    }, 100)
   }
 }
 </script>

@@ -21,7 +21,7 @@ export default {
       },
       timelines: {
         keyPress: [],
-        intro: gsap.timeline({ paused: true })
+        intro: gsap.timeline({ paused: true, delay: 3.5 })
       }
     }
   },
@@ -46,7 +46,8 @@ export default {
 
     _setUpTimelines () {
       const items = [this.$refs.arrow_up, this.$refs.arrow_down]
-      // Intro timelin
+
+      // Intro timeline
       const tlIntro = this.timelines.intro
 
       tlIntro.from(items, { x: -10, opacity: 0 }, 0.0)
