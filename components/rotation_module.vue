@@ -1,14 +1,13 @@
 <template>
   <section class="rotation">
     <div ref="disc" class="rotation__disc">
-
-      <div class="rotation__disc-inner" />
+      <div ref="disc_inner" class="rotation__disc-inner" />
 
       <ul ref="list_container" class="rotation__list">
         <li v-for="(item, index) in data.content" :key="index" ref="item" class="rotation__list-item">
-          <div @click="() => _containerClickHandler(index)" class="rotation__item-container">
+          <div class="rotation__item-container" @click="() => _containerClickHandler(index)">
             <div class="rotation__item-cover">
-            <RotationCover :index="index" :data="item" ref="rotation_cover" />
+              <RotationCover ref="rotation_cover" :index="index" :data="item" />
             </div>
           </div>
         </li>
@@ -49,33 +48,44 @@ export default {
     '$store.state.rotate.currentIndex': {
       handler (newValue, oldValue) {
         console.log(`new ${newValue} -  old ${oldValue}`)
+        this._clickNextAnimation()
         this._rotateToIndex(this.$store.state.rotate.currentIndex, newValue, oldValue)
       }
     },
 
     '$store.state.rotate.dragging': {
-      handler (newValue) {
-        this._isDraggingAnimation(newValue)
+      handler (draggingBoolean) {
+        console.log(draggingBoolean)
+      }
+    },
+
+    '$store.state.preloader.loaded': {
+      handler () {
+        this.timelines.intro.play()
       }
     }
   },
 
   mounted () {
-    gsap.set(this.$refs.disc, { opacity: 0 })
     this._setUpTimelines()
     this._createDragInstance()
     this._placeCirclesCirculair()
-
-    setTimeout(() => {
-      this.timelines.intro.play()
-    }, 500)
   },
 
   methods: {
     _setUpTimelines () {
       const tlIntro = this.timelines.intro
+      const currentIndex = this.$store.state.rotate.currentIndex
 
-      tlIntro.to(this.$refs.disc, { duration: 0.5, opacity: 1 })
+      tlIntro.to(this.$refs.list_container, { rotate: 90, duration: 1.5 }, 1.3)
+      tlIntro.to(this.$refs.disc, { opacity: 1.0, duration: 0.5 }, 1.7)
+      tlIntro.to(this.$refs.disc_inner, { opacity: 0.3, duration: 3 }, 2.0)
+      tlIntro.add(this._callCoverFirstTimelines, 2.0)
+      tlIntro.add(this.$refs.rotation_cover[currentIndex].playCurrentAnimation, 2.0)
+    },
+
+    _callCoverFirstTimelines () {
+      for (let i = 0; i < this.$refs.rotation_cover.length; i++) if (i !== this.$store.state.rotate.currentIndex) this.$refs.rotation_cover[i].playIntroAnimation()
     },
 
     _createDragInstance () {
@@ -102,7 +112,6 @@ export default {
 
       // Rotate container a bit back to align it left
       gsap.set(this.$refs.disc, { yPercent: -50 })
-      this.$refs.list_container.style.transform = `rotate(${90}deg)`
 
       for (let i = 0; i < this.itemCount; i++) {
         const x = Math.round(discRadius + discRadius * Math.cos(angle) - itemBounding.width / 2)
@@ -115,13 +124,16 @@ export default {
     },
 
     _rotateToIndex (index, newValue, oldValue) {
-      if (this.$store.state.rotate.dragging) return
+      const disc = this.$refs.disc
+      const oldAngle = oldValue * this.stepDegrees * -1
+      let currentAngle = index * this.stepDegrees * -1
 
-      const currentAngle = index * this.stepDegrees * -1
+      // Some checks to make the ferris wheel rotate the good direction
+      if (newValue === this.itemCount - 1 && oldValue === 0) currentAngle = 360 - (currentAngle * -1)
+      if (currentAngle === 0 && oldValue === this.itemCount - 1) currentAngle = `-=${this.stepDegrees}`
+      if (currentAngle === 0 && oldValue > 0) currentAngle = `+=${this.stepDegrees}`
 
-      if (newValue === this.itemCount - 1) gsap.to(this.$refs.disc, { duration: 0.5, rotate: this.stepDegrees })
-      else if (newValue === 0 && newValue > 0) gsap.from(this.$refs.disc, { duration: 0.5, rotate: 0 })
-      else gsap.to(this.$refs.disc, { duration: 0.5, rotate: currentAngle })
+      gsap.fromTo(disc, { rotate: oldAngle }, { duration: 0.5, rotate: currentAngle })
     },
 
     _snapFromDrag (endValue) {
@@ -135,12 +147,22 @@ export default {
       return currentDegrees
     },
 
-    _isDraggingAnimation (dragging) {
-      for (let i = 0; i < this.$refs.rotation_cover.length; i++) dragging ? this.$refs.rotation_cover[i].playDraggingStartAnimation() : this.$refs.rotation_cover[i].playDraggingEndAnimation()
+    _isDraggingAnimation (draggingBoolean) {
+      // for (let i = 0; i < this.$refs.rotation_cover.length; i++) this.$refs.rotation_cover[i].playDraggingStartAnimation()
+    },
+
+    _isDraggingStopAnimation () {
+      for (let i = 0; i < this.$refs.rotation_cover.length; i++) this.$refs.rotation_cover[i].playDraggingEndAnimation()
     },
 
     _isDraggingCurrentAnimation () {
       this.$refs.rotation_cover[this.$store.state.rotate.currentIndex].playCurrentAnimation()
+    },
+
+    _clickNextAnimation () {
+      if (this.$store.state.rotate.dragging) return
+
+      for (let i = 0; i < this.$refs.rotation_cover.length; i++) i !== this.$store.state.rotate.currentIndex ? this.$refs.rotation_cover[i].playNextAnimation() : this.$refs.rotation_cover[i].playCurrentAnimation()
     },
 
     // Handlers
@@ -150,11 +172,12 @@ export default {
 
     _draggableDragStartHandler () {
       this.$store.commit('rotate/setDrag', true)
+      for (let i = 0; i < this.$refs.rotation_cover.length; i++) if (i === this.$store.state.rotate.currentIndex) this.$refs.rotation_cover[i].playDraggingStartAnimation()
     },
 
     _draggableThrowCompleteHandler () {
       this.$store.commit('rotate/setDrag', false)
-      this._isDraggingCurrentAnimation()
+      this.$refs.rotation_cover[this.$store.state.rotate.currentIndex].playCurrentAnimation()
     },
 
     _draggableSnapHandler (endValue) {
@@ -176,6 +199,7 @@ export default {
   height: 100vh;
   width: 50vw;
 }
+
 .rotation__disc {
   position: absolute;
   top: 50%;
@@ -191,6 +215,7 @@ export default {
   border-radius: 150vh;
 
   // background: linear-gradient(0deg, rgba(131,58,180, 0.2) 0%, rgba(253,29,29,0.2) 50%, rgba(252,176,69, 0.2) 100%);
+  opacity: 0;
   cursor: pointer;
 }
 
@@ -201,9 +226,10 @@ export default {
   width: 119vh;
 
   border-radius: 130vh;
-  border: rem(3px) solid $color-secondary;
+  border-left: rem(3px) solid $color-secondary;
+  border-right: rem(3px) solid $color-secondary;
 
-  opacity: 0.3;
+  opacity: 0.0;
 }
 
 .rotation__list {

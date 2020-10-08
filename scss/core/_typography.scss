@@ -1,38 +1,36 @@
 .heading {
-  // @include font-giselle-regular();
+  @include font-neue-haas-bold();
 
   margin: 0;
   padding: 0;
 
-  color: $color-white;
+  font-size: rem(45px);
+  line-height: 0.8;
 
-  // font-size: rem(110px);
-  // line-height: 0.8;
-  // text-transform: uppercase;
-  // letter-spacing: 0.2vw;
+  color: $color-white;
 }
 
 .subheading {
-  // @include font-favorit-bold();
+  @include font-neue-haas-regular();
+
+  margin: 0;
+  padding: 0;
+
+  font-size: rem(35px);
+  line-height: 0.8;
+
+  color: $color-white;
+}
+
+.paragraph {
+  @include font-neue-haas-regular();
+
   margin: 0;
   padding: 0;
 
   color: $color-white;
 
-  // font-size: rem(16px);
-  // line-height: rem(25px);
-  // letter-spacing: -#{-2px};
-}
-
-.paragraph {
-  // @include font-favorit-light();
-
-  // margin: 0;
-  // padding: 0;
-
-  // color: $color-black;
-
-  // font-size: rem(15px);
-  // line-height: rem(25px);
-  // letter-spacing: 1.1;
+  font-size: rem(14px);
+  line-height: rem(20px);
+  letter-spacing: 1.1;
 }
