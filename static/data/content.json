@@ -1,85 +1,69 @@
 {
   "content": [
     {
-      "title": "Inception",
-      "duration": "1h 28min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
-      "trailer": {
-        "path": "test_trailer.mp4",
-        "alt": "Trailer"
-      },
-      "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
-      },
-      "link": "#",
-      "watched_duration": 30,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
-    },
-    {
-      "title": "The Shawshank Redemption",
+      "title": "The shawshank redemption",
       "duration": "1h 2min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "Summaries. Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. Chronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit.",
+      "director": "Frank Darabont",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "shawnshank_redemption.png",
+        "alt": "Trailer of The Shawshank Redemption"
       },
-      "link": "#",
-      "watched_duration": 10,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 10
     },
     {
       "title": "The Godfather",
       "duration": "2h 1min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "It is the first installment in The Godfather trilogy. The story, spanning from 1945 to 1955, chronicles the Corleone family under patriarch Vito Corleone (Brando), focusing on the transformation of one of his sons, Michael Corleone (Pacino), from reluctant family outsider to ruthless mafia boss.",
+      "director": "Francis Ford Coppola",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "godfather.png",
+        "alt": "Trailer of Godfather"
       },
-      "link": "#",
-      "watched_duration": 0,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 0
     },
     {
       "title": "The Dark Knight",
-      "duration": "0h 59min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
+      "duration": "2h 59min",
+      "short_summary": "A gang of criminals robs a Gotham City mob bank, murdering each other for a higher share until only the Joker remains; he escapes with the money. Batman, District Attorney Harvey Dent and Lieutenant Jim Gordon form an alliance to rid Gotham of organized crime.",
       "director": "Christopher Nolan",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "dark_knight.png",
+        "alt": "Trailer of The Dark Knight"
       },
-      "link": "#",
-      "watched_duration": 80,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 80
     },
     {
       "title": "Lord of the Rings",
       "duration": "1h 12min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
+      "short_summary": "An ancient ring, which has been lost for years, is found and accidentally ends up with the little Hobbit Frodo.",
+      "director": "Peter Jackson",
+      "trailer": {
+        "path": "test_trailer.mp4",
+        "alt": "Trailer"
+      },
+      "cover": {
+        "path": "lord_of_the_rings.png",
+        "alt": "Trailer of The Lord of the Rings"
+      },
+      "watched_duration": 0
+    },
+    {
+      "title": "Inception",
+      "duration": "1h 28min",
+      "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real.",
       "director": "Christopher Nolan",
       "trailer": {
         "path": "test_trailer.mp4",
@@ -89,220 +73,172 @@
         "path": "inception.png",
         "alt": "Trailer of inception"
       },
-      "link": "#",
-      "watched_duration": 0,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 30
     },
     {
       "title": "Pulp fiction",
       "duration": "1h 43min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "Pulp fiction is the masterpiece of writer-director Quentin Tarentino. Coming back to the cinema! Honey Bunny and Pumkin, two petty thieves, come to the conclusion that it is becoming too risky to raid liquor stores. During breakfast in a coffee shop they decide that there is more to get.",
+      "director": "Quentin Tarantino",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "pulp_fiction.png",
+        "alt": "Trailer of Pulp Fiction"
       },
-      "link": "#",
-      "watched_duration": 22,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 22
     },
     {
-      "title": "Angry man",
+      "title": "Avengers",
       "duration": "1h 32min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "S.H.I.E.L.D. has located the mysterious Tesseract device and the Army's super soldier Captain America. The Tesseract is actually a gateway to an entirely new world called Asgard. A mysterious being known as Loki arrives on earth and immediately assumes that he can rule all human beings.",
+      "director": "Joss Whedon",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "avengers.png",
+        "alt": "Trailer of Avengers"
       },
-      "link": "#",
-      "watched_duration": 0,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 0
     },
     {
       "title": "Forrest Gump",
       "duration": "1h 48min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "Forrest Gump is a simple man with a low I.Q. but good intentions. He is running through childhood with his best and only friend Jenny. His 'mama' teaches him the ways of life and leaves him to choose his destiny.",
+      "director": "Robert Zemeckis",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "forrest_gump.png",
+        "alt": "Trailer of Forrest gump"
       },
-      "link": "#",
-      "watched_duration": 11,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 11
     },
     {
       "title": "Goodfellas",
       "duration": "2h 45min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "The story of Irish-Italian American, Henry Hill, and how he lives day-to-day life as a member of the Mafia. Based on a true story, the plot revolves around Henry and his two unstable friends Jimmy and Tommy as they gradually climb the ladder from petty crime to violent murders.",
+      "director": "Martin Scorsese",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "goodfellas.png",
+        "alt": "Trailer of Goodfellas"
       },
-      "link": "#",
-      "watched_duration": 43,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 43
     },
     {
       "title": "Instestellar",
       "duration": "3h 12min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
+      "short_summary": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. Earth's future has been riddled by disasters, famines, and droughts. There is only one way to ensure mankind's survival: Interstellar travel.",
       "director": "Christopher Nolan",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "intestellar.png",
+        "alt": "Trailer of intestellar"
       },
-      "link": "#",
-      "watched_duration": 0,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 0
     },
     {
-      "title": "Inception",
+      "title": "Toy story",
       "duration": "1h 43min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "Woody and the gang go on a road trip with new toy Forky, who's convinced he's trash and doesn't yet understand his role in the world. Along the way, Woody is unexpectedly reunited with independent spirit Bo Peep and finds himself faced with a decision, and a future, he never imagined.",
+      "director": "Josh Cooley",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "toy_story.png",
+        "alt": "Trailer of toy story"
       },
-      "link": "#",
-      "watched_duration": 93,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 93
     },
     {
-      "title": "Het leven is mooi",
+      "title": "Hateful eight",
       "duration": "2h 10min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "Summaries. In the dead of a Wyoming winter, a bounty hunter and his prisoner find shelter in a cabin currently inhabited by a collection of nefarious characters. Some time after the Civil War, a stagecoach hurtles through the wintry Wyoming landscape.",
+      "director": "Quentin Tarantino",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
+        "path": "hateful_eight.png",
         "alt": "Trailer of inception"
       },
-      "link": "#",
-      "watched_duration": 11,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 11
     },
     {
       "title": "Star wars",
       "duration": "2h 28min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "The Last Jedi follows Rey as she seeks the aid of Luke Skywalker, in hopes of turning the tide for the Resistance in the fight against Kylo Ren and the First Order, while General Leia Organa, Finn, and Poe Dameron attempt to escape a First Order attack on the dwindling Resistance fleet.",
+      "director": "Rian Craig Johnson",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "star_wars.png",
+        "alt": "Trailer of Star Wars"
       },
-      "link": "#",
-      "watched_duration": 93,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 93
     },
     {
       "title": "Whiplash",
       "duration": "2h 28min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "Whiplash is a 2014 American drama film written and directed by Damien Chazelle. It depicts the relationship between an ambitious jazz drummer (Miles Teller) and an abusive bandleader (J. K. Simmons) at the fictional Shaffer Conservatory.",
+      "director": "Damien Chazelle",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "whiplash.png",
+        "alt": "Trailer of Whiplash"
       },
-      "link": "#",
-      "watched_duration": 0,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 0
     },
     {
       "title": "The Intouchables",
       "duration": "2h 28min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "The Intouchables tells the true story of a wealthy, physically disabled risk taker, the picture of established French nobility, who lost his wife in an accident and whose world is turned upside down when he hires a young, good-humored, black Muslim ex-con as his caretaker.",
+      "director": "Olivier Nakache",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "the_intouchables.png",
+        "alt": "Trailer of the intouchables"
       },
-      "link": "#",
-      "watched_duration": 0,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 0
     },
     {
       "title": "Gladiator",
       "duration": "2h 28min",
-      "short_summary": "Dom Cobb verdietn veel geld met het infiltreren in de dromen van zakenmagnaten om zo hun meest waardevolle geheimen te stelen.",
-      "director": "Christopher Nolan",
+      "short_summary": "Crowe portrays Roman general Maximus Decimus Meridius, who is betrayed when Commodus, the ambitious son of Emperor Marcus Aurelius, murders his father and seizes the throne. Reduced to slavery, Maximus becomes a gladiator and rises through the ranks of the arena to avenge the murders of his family and his emperor.",
+      "director": "Ridley Scott",
       "trailer": {
         "path": "test_trailer.mp4",
         "alt": "Trailer"
       },
       "cover": {
-        "path": "inception.png",
-        "alt": "Trailer of inception"
+        "path": "gladiator.png",
+        "alt": "Trailer of gladiator"
       },
-      "link": "#",
-      "watched_duration": 12,
-      "more": {
-        "short_summary": "Inception is the story of Dom Cobb (Leonardo DiCaprio), a thief of the mind called an extractor who enters the dreams of high powered individuals and steals their secrets via an architect. The architect is responsible for building the world of the dreamer, convincing them their surroundings are real."
-      }
+      "watched_duration": 12
     }
   ]
 }

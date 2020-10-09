@@ -151,13 +151,13 @@ export default {
 
       // Timeline when dragging ends
       const tlEndDragging = this.timelines.endDragging
-      tlEndDragging.set(first.item, { opacity: 1.0 }, 0.0)
-      tlEndDragging.set([first.title, first.duration, first.director, first.summary, first.buttons], { opacity: 0.0, y: 10 }, 0.0)
-      tlEndDragging.to(first.item, { rotate: 0.0, duration: 0.5 }, 0.0)
-      tlEndDragging.to(first.title, { opacity: 1.0, y: 0, duration: 0.5 }, 0.0)
-      tlEndDragging.to([first.duration, first.director], { opacity: 1.0, y: 0, duration: 0.5 }, 0.2)
-      tlEndDragging.to(first.summary, { opacity: 1.0, y: 0, duration: 0.5 }, 0.4)
-      tlEndDragging.to(first.buttons, { opacity: 1.0, y: 0, stagger: 0.2 }, 0.8)
+      tlEndDragging.set(second.item, { opacity: 1.0 }, 0.0)
+      tlEndDragging.set([second.title, second.duration, second.director, second.summary, second.buttons], { opacity: 0.0, y: 10, x: 0.0 }, 0.0)
+      tlEndDragging.to(second.item, { rotate: 0.0, duration: 0.5 }, 0.0)
+      tlEndDragging.to(second.title, { opacity: 1.0, y: 0.0, duration: 0.5 }, 0.0)
+      tlEndDragging.to([second.duration, second.director], { opacity: 1.0, y: 0.0, duration: 0.5 }, 0.2)
+      tlEndDragging.to(second.summary, { opacity: 1.0, y: 0.0, duration: 0.5 }, 0.4)
+      tlEndDragging.to(second.buttons, { opacity: 1.0, y: 0.0, stagger: 0.2 }, 0.8)
     },
 
     _changeItemData (index) {
@@ -212,6 +212,7 @@ export default {
 }
 .details__title {
   font-size: rem(35px);
+  line-height: rem(45px);
 
   padding-bottom: rem(25px);
 }
