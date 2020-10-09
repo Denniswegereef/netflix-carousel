@@ -50,7 +50,7 @@ export default {
       // Intro timeline
       const tlIntro = this.timelines.intro
 
-      tlIntro.from(items, { x: -10, opacity: 0 }, 0.0)
+      tlIntro.fromTo(items, { x: -10, opacity: 0 }, { x: 0, opacity: 0.4 }, 0.0)
 
       // Keypress timeline
       items.forEach((element, index) => {
@@ -60,9 +60,9 @@ export default {
         const item = index === 0 ? this.$refs.arrow_up : this.$refs.arrow_down
 
         tl.to(item, { borderBottomColor: this.color.red, duration: 0.1 }, 0.0)
-        tl.to(item, { scale: 1.1, duration: 0.2 }, 0.05)
+        tl.to(item, { scale: 1.1, opacity: 1.0, duration: 0.2 }, 0.05)
         tl.to(item, { borderBottomColor: this.color.grey, duration: 0.1 }, 0.2)
-        tl.to(item, { scale: 1.0, duration: 0.2 }, 0.25)
+        tl.to(item, { scale: 1.0, opacity: 0.4, duration: 0.2 }, 0.25)
       })
     },
 
@@ -98,6 +98,7 @@ export default {
 .arrows__single {
   width: 0;
   height: 0;
+
   border-left: rem(10px) solid transparent;
   border-right: rem(10px) solid transparent;
 

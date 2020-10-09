@@ -7,7 +7,6 @@
         class="rotation-cover__video"
         :src="coverVideo"
         type="video/mp4"
-        muted
         paused />
       <img ref="image" :src="coverImage" :alt="$props.data.cover.alt" class="rotation-cover__image">
     </div>
@@ -37,7 +36,6 @@ export default {
     return {
       timelines: {
         intro: gsap.timeline({ paused: true }),
-        // setCurrent: gsap.timeline({ paused: true }),
         startDragging: gsap.timeline({ paused: true }),
         stopDragging: gsap.timeline({ paused: true }),
         next: gsap.timeline({ paused: true })
@@ -57,6 +55,14 @@ export default {
 
     setWidth () {
       return `width: ${this.$props.data.watched_duration}%`
+    }
+  },
+
+  watch: {
+    '$store.state.sound.muted': {
+      handler (muted) {
+        this._muteVideoToggler(muted)
+      }
     }
   },
 
@@ -116,7 +122,6 @@ export default {
 
       // When user starts dragging timeline
       const tlStartDragging = this.timelines.startDragging
-      // tlStartDragging.eventCallback('onComplete', this._onCompleteTimelineHandler, [tlStartDragging])
       tlStartDragging.add(this._pauseVideo, 0.0)
       tlStartDragging.to(image, { opacity: 1.0, duration: 0.3 }, 0.2)
       tlStartDragging.to(cover, { duration: 0.5, x: 0.0, opacity: 0.2, scale: 0.8 }, 0.2)
@@ -162,12 +167,18 @@ export default {
 
     // Handlers
     _coverMouseOverHandler () {
-      if (this.$store.state.rotate.dragging) return
+      if (this.$store.state.rotate.dragging || this.$props.index === this.$store.state.rotate.currentIndex) return
 
       gsap.to(this.$refs.cover, { opacity: 0.8, duration: 0.2 })
     },
 
+    _muteVideoToggler (muted) {
+      muted ? this.$refs.video.muted = true : this.$refs.video.muted = false
+    },
+
     _coverMouseLeaveHandler () {
+      if (this.$props.index === this.$store.state.rotate.currentIndex) return
+
       gsap.to(this.$refs.cover, { opacity: 0.2, duration: 0.3 })
     }
   }
@@ -194,6 +205,8 @@ export default {
 
   height: 100%;
   width: 100%;
+
+  border-radius: rem(10px);
 
   overflow: hidden;
 }
@@ -234,7 +247,6 @@ export default {
     top: -1px;
     left: 0;
 
-    // width: 40%;
     height: 5px;
 
     background: $color-primary;

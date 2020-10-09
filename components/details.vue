@@ -23,8 +23,11 @@
 
 <script>
 import { gsap } from 'gsap'
+import { SplitText } from '../plugins/SplitText'
 import data from '~/static/data/content.json'
 import IconButton from '~/components/buttons/icon.vue'
+
+if (process.client) gsap.registerPlugin(SplitText)
 
 export default {
   components: {
@@ -100,7 +103,7 @@ export default {
     },
 
     _setUpTimelines () {
-      const startDegrees = 18
+      // const startDegrees = 0
       const tlIntro = this.timelines.intro
 
       const arr = []
@@ -124,40 +127,36 @@ export default {
       const first = arr[0]
       const second = arr[1]
 
+      const firstSplitted = new SplitText(first.summary, { type: 'lines' })
+      const secondSplitted = new SplitText(second.summary, { type: 'lines' })
+
       // Timeline when page loads
-      gsap.set([first.item, second.item], { rotate: startDegrees, opacity: 0.0 })
-      tlIntro.to(first.item, { rotate: 0.0, opacity: 1.0, ease: 'power2.out', duration: 1.2 }, 0.0)
-      tlIntro.to(first.item, { rotate: 0.0, opacity: 1.0, duration: 1.5 }, 0.0)
-      tlIntro.from(first.title, { opacity: 0.0, ease: 'power2.out', duration: 0.3 }, 0.3)
-      tlIntro.from([first.duration, first.director], { opacity: 0.0, x: -10, ease: 'power2.out', stagger: 0.2 }, 1.2)
-      tlIntro.from(first.summary, { opacity: 0.0, x: 25, ease: 'power2.out', duration: 0.8 }, 1.8)
-      tlIntro.from(first.buttons, { opacity: 0.0, y: -10, stagger: 0.2 }, 1.8)
+      tlIntro.from(first.title, { opacity: 0.0, y: 15.0, ease: 'power2.out', duration: 0.8 }, 0.3)
+      tlIntro.from([first.duration, first.director], { opacity: 0.0, y: -10, ease: 'power2.out', stagger: 0.1 }, 0.6)
+      tlIntro.from(firstSplitted.lines, { opacity: 0.0, x: 5.0, ease: 'power2.out', stagger: 0.2 }, 1.0)
+      tlIntro.from(first.buttons, { opacity: 0.0, y: -10, stagger: 0.2 }, 1.5)
 
       // Timeline when user clicks on arrow or cover
       const tlClick = this.timelines.click
-      tlClick.to(first.item, { rotate: -startDegrees / 3, opacity: 0.0, ease: 'power4.out', duration: 0.5 }, 0.0)
-      tlClick.set([second.item, second.item], { rotate: startDegrees, opacity: 0.0 }, 0.0)
-      tlClick.to(second.item, { rotate: 0.0, opacity: 1.0, ease: 'power2.out', duration: 1.2 }, 0.0)
-      tlClick.to(second.item, { rotate: 0.0, opacity: 1.0, duration: 1.5 }, 0.0)
-      tlClick.from(second.title, { opacity: 0.0, ease: 'power2.out', duration: 0.3 }, 0.3)
-      tlClick.from([second.duration, second.director], { opacity: 0.0, x: -10, ease: 'power2.out', stagger: 0.2 }, 1.2)
-      tlClick.from(second.summary, { opacity: 0.0, x: 25, ease: 'power2.out', duration: 0.8 }, 1.8)
-      tlClick.from(second.buttons, { opacity: 0.0, y: -10, stagger: 0.2 }, 1.8)
+      tlClick.set(second.item, { opacity: 1.0 }, 0.0)
+      tlClick.to(first.item, { opacity: 0.0, y: 20.0, ease: 'power2.out', duration: 0.3 }, 0.0)
+      tlClick.from(second.title, { opacity: 0.0, y: 15.0, ease: 'power2.out', duration: 0.8 }, 0.3)
+      tlClick.from([second.duration, second.director], { opacity: 0.0, y: -10, ease: 'power2.out', stagger: 0.1 }, 0.6)
+      tlClick.from(secondSplitted.lines, { opacity: 0.0, x: 5.0, ease: 'power2.out', stagger: 0.15 }, 1.0)
+      tlClick.from(second.buttons, { opacity: 0.0, y: -10, stagger: 0.2 }, 1.5)
 
       // Timeline when dragging starts
       const tlStartDragging = this.timelines.startDragging
       tlStartDragging.set(second.item, { opacity: 0.0 }, 0.0)
-      tlStartDragging.to(first.item, { opacity: 0.0, duration: 0.7 }, 0.0)
+      tlStartDragging.to(first.item, { opacity: 0.0, y: 20.0, ease: 'power2.out', duration: 0.3 }, 0.0)
 
       // Timeline when dragging ends
       const tlEndDragging = this.timelines.endDragging
       tlEndDragging.set(second.item, { opacity: 1.0 }, 0.0)
-      tlEndDragging.set([second.title, second.duration, second.director, second.summary, second.buttons], { opacity: 0.0, y: 10, x: 0.0 }, 0.0)
-      tlEndDragging.to(second.item, { rotate: 0.0, duration: 0.5 }, 0.0)
-      tlEndDragging.to(second.title, { opacity: 1.0, y: 0.0, duration: 0.5 }, 0.0)
-      tlEndDragging.to([second.duration, second.director], { opacity: 1.0, y: 0.0, duration: 0.5 }, 0.2)
-      tlEndDragging.to(second.summary, { opacity: 1.0, y: 0.0, duration: 0.5 }, 0.4)
-      tlEndDragging.to(second.buttons, { opacity: 1.0, y: 0.0, stagger: 0.2 }, 0.8)
+      tlEndDragging.fromTo(second.title, { opacity: 0.0, y: 15.0 }, { opacity: 1.0, y: 0.0, ease: 'power2.out', duration: 0.8 }, 0.3)
+      tlEndDragging.fromTo([second.duration, second.director], { opacity: 0.0, y: -10 }, { opacity: 1.0, y: 10.0, ease: 'power2.out', stagger: 0.1 }, 0.6)
+      tlEndDragging.fromTo(secondSplitted.lines, { opacity: 0.0, x: 5.0 }, { opacity: 1.0, x: 0.0, ease: 'power2.out', stagger: 0.15 }, 1.0)
+      tlEndDragging.fromTo(second.buttons, { opacity: 0.0, y: -10 }, { opacity: 1.0, y: 0.0, stagger: 0.2 }, 1.5)
     },
 
     _changeItemData (index) {
@@ -214,7 +213,7 @@ export default {
   font-size: rem(35px);
   line-height: rem(45px);
 
-  padding-bottom: rem(25px);
+  padding-bottom: rem(15px);
 }
 
 .details__sub-text {
@@ -228,11 +227,11 @@ export default {
 .details__duration, .details__director {
   font-size: rem(16px);
 
-  padding-bottom: rem(15px);
+  padding-bottom: rem(25px);
 }
 
 .details__summary-short {
-  padding-bottom: rem(15px);
+  padding-bottom: rem(30px);
 }
 
 .details__action {
