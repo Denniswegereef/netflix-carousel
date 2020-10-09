@@ -16,6 +16,8 @@ So started with a little research on what the current state of the Netflix carou
 
 Ended up with a concept that was based on the old film tapes where the carousel would rotate and had the tapes feel to it. So after some discussion with a couple of friends who are also working in the field, I just went with it and did not swing around with multiple ideas and don't pursue them. Made a design in Adobe XD just to get some visual perspective where I wanna go and what elements should be relevant. What was also important is that I tried to keep the visual look of Netflix as close as possible, but give my own twist.
 
+![Concept](first_concept.png)
+
 &nbsp;
 
 ## Current stack
