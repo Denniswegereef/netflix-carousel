@@ -1,16 +1,14 @@
 # Resn dev assignment
 
-> Resn dev assignment
-
 The result can be found [here](https://api.denniswegereef.nl/)
 
 Had a lot of fun getting the freedom of turning something so simple that we almost use everyday to something more interesting. In this document, I describe a little what went through my head and the steps I took to get to the current result.
 
 Tried to find a nice balance between how difficult I could make it for myself and the hours I got. So trying to challenge me but don't build the impossible without the certainty that's gonna work or ever end (what is also fun but really wanna deliver something that works also.
 
----
+&nbsp;
 
-### Concept
+## Concept
 
 So started with a little research on what the current state of the Netflix carousel is. Made notes about the desktop and the mobile how they function and currently what they offer. After that, went looking for the obvious redesigns of a Netflix page on some inspirational websites to get familiar with it and look obviously for inspiration. Slowly that went to look at interesting takes on how a carousel could work other than just having a horizontal line of cards.
 
@@ -18,9 +16,9 @@ So started with a little research on what the current state of the Netflix carou
 
 Ended up with a concept that was based on the old film tapes where the carousel would rotate and had the tapes feel to it. So after some discussion with a couple of friends who are also working in the field, I just went with it and did not swing around with multiple ideas and don't pursue them. Made a design in Adobe XD just to get some visual perspective where I wanna go and what elements should be relevant. What was also important is that I tried to keep the visual look of Netflix as close as possible, but give my own twist.
 
----
+&nbsp;
 
-### Current stack
+## Current stack
 
 The stack that I've used:
 
@@ -36,10 +34,9 @@ The stack that I've used:
 
 Also worth noting that I tried to use my own variation BEM-look-a-like for writing classes and use the same structure of writing elements across my project.
 
----
+&nbsp;
 
-
-### Process
+## Process
 
 I've built it across several days starting from Monday the 5th till Friday the 9th of October. Where I spent numerous hours in different sessions on it when I had some time to spare.
 
@@ -52,18 +49,18 @@ Later in the week, it was building the last items such as the sound module, prel
 
 The last day was more about tweaking up some things I wasn't happy about, but no major changes whatsoever.
 
----
+&nbsp;
 
-### Conclusion
+## Conclusion
 
 Overall I'm quite happy how it turned out from my concept to a working product and how it was pictured in my head. That I took a different approach to create a carousel with an interesting spin, pun intended.
 In terms of how the code was written, I think I did a good job on how modular it was built and all centered on the rotating piece.
 
 But with something like this, the longer you're looking at it the more you start to notice that you wanna do things differently and change them. Of course, when you spend another several hours it could improve so much more but something like this is never done :).
 
----
+&nbsp;
 
-### Time spent
+## Time spent
 I kept track of the time I was working on it.
 
  __Monday__
